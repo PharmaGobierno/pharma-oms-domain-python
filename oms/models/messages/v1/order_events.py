@@ -16,7 +16,7 @@ class OrderEventsKafkaMessage(BaseKafkaMessage):
 
     def topic(self) -> str:
         """Returns the topic based in the order_type."""
-        return "oms-order-events" + "-" + self.order_type
+        return "OMS" + "." + "ORDER_EVENTS" + "." + self.order_type
 
     def get_headers(self) -> Dict[str, str]:
         default_headers = super().get_headers()
