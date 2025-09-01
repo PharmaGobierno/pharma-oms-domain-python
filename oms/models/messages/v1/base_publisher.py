@@ -2,14 +2,14 @@ from dataclasses import asdict, dataclass, field
 from time import time
 from typing import Any, Dict, Optional
 
-from oms.models.v1.minified.users import UserMin
+from oms.models.v1.minified.users import UsersMin
 
 
 @dataclass
 class BasePubsubMessage:
     payload: Any
     origin_timestamp: int
-    author: UserMin
+    author: UsersMin
     version: str
     published_at: int = field(default_factory=lambda: round(time() * 1000))
     context: Optional[dict] = None
@@ -29,7 +29,7 @@ class BasePubsubMessage:
 class BaseKafkaMessage:
     payload: Any
     origin_timestamp: int
-    author: UserMin
+    author: UsersMin
     version: str
     published_at: int = field(default_factory=lambda: round(time() * 1000))
     context: Optional[dict] = None

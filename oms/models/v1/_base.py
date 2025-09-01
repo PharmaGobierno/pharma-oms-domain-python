@@ -22,9 +22,9 @@ def uuid_by_params(*args):
 
 @dataclass
 class BaseModel:
+    tenant_id: str
     _id: str = field(default_factory=lambda: str(uuid4()))
     created_at: int = field(default_factory=lambda: round(time() * 1000))
-    tenant_id: str = ""  # TODO: Define Tenant ID for multi-tenancy support
     version: str = "1.0.0"
 
     @classmethod
@@ -72,7 +72,7 @@ class UpdatableModel(BaseModel):
 
 
 @dataclass(kw_only=True)
-class EventfulModel(UpdatableModel, Generic[EventAttributeT]):
+class EventfulModel(BaseModel, Generic[EventAttributeT]):
     """A generic dataclass representing a event entity with
     event timestamp. Using in event sourcing entities
 

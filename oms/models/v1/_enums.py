@@ -5,7 +5,7 @@ class OrderTypes(str, Enum):
     REMISSION_PISA = "REMISSION_PISA"
 
 
-class RemissionPisaEvents(str, Enum):
+class RemissionEvents(str, Enum):
     ORDER_CREATED = "ORDER_CREATED"
     ORDER_REJECTED = "ORDER_REJECTED"
     ORDER_FULLFILLED = "ORDER_FULLFILLED"
