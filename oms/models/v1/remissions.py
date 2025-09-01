@@ -24,6 +24,7 @@ class RemissionsModel(UpdatableModel):
     current_event: Optional[RemissionEvents] = None
     current_event_timestamp: Optional[int] = None
     author: Optional[UsersMin] = None
+    institution: Optional[dict] = None  # {id:str, name:str} ?
 
     def __post_init__(self):
         super().__post_init__()
