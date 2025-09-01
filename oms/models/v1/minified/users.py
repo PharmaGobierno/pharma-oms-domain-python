@@ -3,7 +3,7 @@ from typing import Optional
 
 
 @dataclass
-class UserMin:
+class UsersMin:
     id: str
     name: str
     type: Optional[str] = None

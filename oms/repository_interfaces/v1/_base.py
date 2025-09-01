@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 from typing import Iterator, List, Optional, Tuple, Union
 
 
-class BaseRepositoryInterface(metaclass=ABCMeta):
+class BaseRepository(metaclass=ABCMeta):
 
     @classmethod
     def __subclasshook__(cls, subclass):
