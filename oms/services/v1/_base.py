@@ -1,9 +1,9 @@
 from typing import Generic, Iterator, List, Optional, Tuple, Type, TypeVar, Union
 
 from oms.models.v1._base import BaseModel
-from oms.repository_interfaces.v1._base import BaseRepositoryInterface
+from oms.repository_interfaces.v1._base import BaseRepository
 
-RepositoryInterfaceT = TypeVar("RepositoryInterfaceT", bound="BaseRepositoryInterface")
+RepositoryInterfaceT = TypeVar("RepositoryInterfaceT", bound="BaseRepository")
 ModelT = TypeVar("ModelT", bound="BaseModel")
 
 
