@@ -19,11 +19,11 @@ class RemissionsModel(UpdatableModel):
     items: List[str]  # list[skus]
     delivery_destination: RemissionDestination
     delivery_date: int
+    author: UsersMin
     delivery_id: Optional[str] = None
     appointment_develery_date: Optional[int] = None
     current_event: Optional[RemissionEvents] = None
     current_event_timestamp: Optional[int] = None
-    author: Optional[UsersMin] = None
     institution: Optional[dict] = None  # {id:str, name:str} ?
 
     def __post_init__(self):

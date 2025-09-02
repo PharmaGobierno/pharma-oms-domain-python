@@ -15,8 +15,8 @@ class RemissionDetailsModel(UpdatableModel):
 
     remission: RemissionsMin
     item: Item
-    lotes: Optional[List[Lote]]
-    author: Optional[UsersMin] = None
+    author: UsersMin
+    lotes: Optional[List[Lote]] = None
 
     def __post_init__(self):
         super().__post_init__()
