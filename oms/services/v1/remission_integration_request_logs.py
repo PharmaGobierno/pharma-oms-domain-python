@@ -8,7 +8,7 @@ from oms.repository_interfaces.v1.remission_integration_request_logs import (
 from ._base import BaseService
 
 
-class RemissionChangelogsService(
+class RemissionIntegrationRequestLogsService(
     BaseService[
         RemissionIntegrationRequestLogsModel, RemissionIntegrationRequestLogsRepository
     ]
