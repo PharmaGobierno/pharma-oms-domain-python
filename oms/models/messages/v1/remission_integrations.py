@@ -10,6 +10,7 @@ class RemissionIntegrationsPubsubMessage(BasePubsubMessage):
     origin_platform: str
     order_type: str
     version: str = "1"
+    tenant: str
 
     @classmethod
     def topic(cls) -> str:
