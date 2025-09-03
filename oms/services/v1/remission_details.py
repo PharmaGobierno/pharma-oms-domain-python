@@ -16,6 +16,10 @@ class RemissionDetailsService(
         tracking_id: str,
         *,
         tenant: Optional[List[str]] = None,
+        sort: Optional[List[Tuple[str, int]]] = None,
+        limit: Optional[int] = None
     ) -> Tuple[int, Iterator[RemissionDetailsModel]]:
-        count, result = self.repository.get_by_tracking_id(tracking_id, tenant=tenant)
+        count, result = self.repository.get_by_tracking_id(
+            tracking_id, tenant=tenant, sort=sort, limit=limit
+        )
         return count, map(lambda r: RemissionDetailsModel(**r), result)
