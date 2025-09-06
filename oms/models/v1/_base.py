@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from dataclasses import asdict, dataclass, field, fields, is_dataclass
 from enum import Enum
 from time import time
@@ -5,6 +6,7 @@ from typing import Generic, TypeVar
 from uuid import NAMESPACE_OID, uuid4, uuid5
 
 EventAttributeT = TypeVar("EventAttributeT", bound="Enum")
+MinifiedObjectT = TypeVar("MinifiedObjectT")
 
 
 def uuid_by_params(*args):
@@ -84,3 +86,10 @@ class EventfulModel(BaseModel, Generic[EventAttributeT]):
 
     event_timestamp: int
     event: EventAttributeT
+
+
+@dataclass(kw_only=True)
+class MinifiableModel(Generic[MinifiedObjectT], ABC):
+    @abstractmethod
+    def minified(self) -> MinifiedObjectT:
+        pass

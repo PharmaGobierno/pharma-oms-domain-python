@@ -4,12 +4,13 @@ from typing import List, Optional
 from oms.models.submodels.v1.remission_destinations import RemissionDestination
 from oms.models.v1.minified.users import UsersMin
 
-from ._base import UpdatableModel, uuid_by_params
+from ._base import MinifiableModel, UpdatableModel, uuid_by_params
 from ._enums import OrderTypes, RemissionEvents
+from .minified.remissions import RemissionsMin
 
 
 @dataclass(kw_only=True)
-class RemissionsModel(UpdatableModel):
+class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
     __entity_name__ = "remissions"
 
     tracking_id: str
@@ -21,7 +22,7 @@ class RemissionsModel(UpdatableModel):
     delivery_date: int
     author: UsersMin
     delivery_id: Optional[str] = None
-    appointment_develery_date: Optional[int] = None
+    appointment_delivery_date: Optional[int] = None
     current_event: Optional[RemissionEvents] = None
     current_event_timestamp: Optional[int] = None
     institution: Optional[dict] = None  # {id:str, name:str} ?
@@ -29,3 +30,14 @@ class RemissionsModel(UpdatableModel):
     def __post_init__(self):
         super().__post_init__()
         self._id = uuid_by_params(self.tracking_id)
+
+    def minified(self) -> RemissionsMin:
+        return RemissionsMin(
+            id=self._id,
+            tenant_id=self.tenant_id,
+            tracking_id=self.tracking_id,
+            order_number=self.order_number,
+            order_type=self.order_type,
+            delivery_date=self.delivery_date,
+            delivery_destination_id=self.delivery_destination.id,
+        )
