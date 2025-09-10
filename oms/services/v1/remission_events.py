@@ -23,3 +23,18 @@ class RemissionEventsService(
             tracking_id, tenant=tenant, sort=sort, limit=limit
         )
         return count, map(lambda r: RemissionEventsModel(**r), result)
+
+    def get_by_tracking_id_and_event_id(
+        self,
+        tracking_id: str,
+        event_id:str,
+        *,
+        tenant: Optional[List[str]] = None,
+    ) -> Optional[RemissionEventsModel]:
+        result = self.repository.get_by_tracking_id_and_event_id(
+            tracking_id=tracking_id, event_id=event_id, tenant=tenant
+        )
+        if not result:
+            return None
+
+        return RemissionEventsModel(**result)

@@ -3,7 +3,8 @@ from dataclasses import asdict, dataclass, field, fields, is_dataclass
 from enum import Enum
 from time import time
 from typing import Generic, TypeVar
-from uuid import NAMESPACE_OID, uuid4, uuid5
+from uuid import NAMESPACE_OID, uuid4, uuid5, UUID
+from base64 import urlsafe_b64encode
 
 EventAttributeT = TypeVar("EventAttributeT", bound="Enum")
 MinifiedObjectT = TypeVar("MinifiedObjectT")
@@ -20,6 +21,12 @@ def uuid_by_params(*args):
     """
     value = "#".join(map(str, args))
     return str(uuid5(namespace=NAMESPACE_OID, name=value))
+
+
+def short_uuid(*args) -> str:
+    """Generates a short, URL-safe UUID based on the given parameters."""
+    long_uuid = UUID(uuid_by_params(*args))
+    return urlsafe_b64encode(long_uuid.bytes).rstrip(b'=').decode()
 
 
 @dataclass
