@@ -16,14 +16,3 @@ class RemissionEventsRepository(BaseRepository):
         limit: Optional[int] = None,
     ) -> Tuple[int, Iterator[dict]]:
         raise NotImplementedError
-
-    @abstractmethod
-    def get_by_tracking_id_and_event_id(
-        self,
-        tracking_id: str,
-        event_id:str,
-        *,
-        tenant: Optional[List[str]] = None,
-        projection: Optional[Union[list, dict]] = None,
-    ) -> Optional[dict]:
-        raise NotImplementedError
