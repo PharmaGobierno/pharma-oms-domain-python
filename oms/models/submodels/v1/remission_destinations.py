@@ -1,10 +1,9 @@
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Literal
 
 
 @dataclass
 class RemissionDestination:
     id: str
-    displayable_name: str = ""
-    company: Optional[str] = None
+    customer: str
     version: Literal["1.0.0"] = "1.0.0"

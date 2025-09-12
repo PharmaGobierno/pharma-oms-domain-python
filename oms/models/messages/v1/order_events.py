@@ -2,11 +2,11 @@ from dataclasses import dataclass
 from typing import Dict
 
 from ._enums import EntityActionTypes
-from .base_publisher import BaseKafkaMessage
+from .base_publisher import BasePubsubMessage
 
 
 @dataclass(kw_only=True)
-class OrderEventsKafkaMessage(BaseKafkaMessage):
+class OrderEventsPubsubMessage(BasePubsubMessage):
     payload: dict
     event: str
     action_type: EntityActionTypes
@@ -14,16 +14,16 @@ class OrderEventsKafkaMessage(BaseKafkaMessage):
     origin_platform: str
     version: str = "1"
 
-    def topic(self) -> str:
-        """Returns the topic based in the order_type."""
-        return "OMS" + "." + "ORDER_EVENTS" + "." + self.order_type
+    @classmethod
+    def topic(cls) -> str:
+        return "oms.order_events"
 
-    def get_headers(self) -> Dict[str, str]:
-        default_headers = super().get_headers()
+    def get_attributes(self) -> Dict[str, str]:
+        default_attributes = super().get_attributes()
         return {
-            **default_headers,
+            **default_attributes,
             "event": self.event,
-            "order_type": self.order_type,
             "action_type": self.action_type.value,
+            "order_type": self.order_type,
             "origin_platform": self.origin_platform,
         }

@@ -25,7 +25,7 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
     appointment_delivery_date: Optional[int] = None
     current_event: Optional[RemissionEvents] = None
     current_event_timestamp: Optional[int] = None
-    institution: Optional[dict] = None  # {id:str, name:str} ?
+    institution_number: Optional[str] = None
 
     def __post_init__(self):
         super().__post_init__()

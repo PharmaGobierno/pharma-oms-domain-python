@@ -11,6 +11,8 @@ class BaseRepository(metaclass=ABCMeta):
             and callable(subclass.create)
             and hasattr(subclass, "update")
             and callable(subclass.update)
+            and hasattr(subclass, "update_many")
+            and callable(subclass.update_many)
             and hasattr(subclass, "set")
             and callable(subclass.set)
             and hasattr(subclass, "get")
