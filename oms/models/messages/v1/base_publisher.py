@@ -43,7 +43,8 @@ class BaseKafkaMessage:
     def dict(self):
         return asdict(self)
 
-    def topic(self) -> str:
+    @classmethod
+    def topic(cls) -> str:
         raise NotImplementedError
 
     def get_headers(self) -> Dict[str, str]:
