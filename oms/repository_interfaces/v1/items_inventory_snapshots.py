@@ -11,6 +11,7 @@ class ItemsInventorySnapshotsRepository(BaseRepository):
         sku: str,
         *,
         quantity_gte: Optional[int] = None,
+        origin_warehouse: Optional[str] = None,
         company: Optional[str] = None,
         project: Optional[str] = None,
         sort: Optional[List[Tuple[str, int]]] = None,
