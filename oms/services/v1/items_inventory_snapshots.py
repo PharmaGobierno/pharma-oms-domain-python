@@ -18,6 +18,7 @@ class ItemsInventorySnapshotsService(
         sku: str,
         *,
         quantity_gte: Optional[int] = None,
+        origin_warehouse: Optional[str] = None,
         company: Optional[str] = None,
         project: Optional[str] = None,
         sort: Optional[List[Tuple[str, int]]] = None,
@@ -26,6 +27,7 @@ class ItemsInventorySnapshotsService(
         count, result = self.repository.get_by_item_sku(
             sku,
             quantity_gte=quantity_gte,
+            origin_warehouse=origin_warehouse,
             company=company,
             project=project,
             sort=sort,
