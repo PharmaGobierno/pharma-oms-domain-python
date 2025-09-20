@@ -5,3 +5,4 @@ class EntityActionTypes(str, Enum):
     CREATED = "CREATED"
     UPDATED = "UPDATED"
     DELETED = "DELETED"
+    REJECTED = "REJECTED"

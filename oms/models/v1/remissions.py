@@ -5,7 +5,6 @@ from oms.models.submodels.v1.remission_destinations import RemissionDestination
 from oms.models.v1.minified.users import UsersMin
 
 from ._base import MinifiableModel, UpdatableModel, uuid_by_params
-from ._enums import OrderTypes, RemissionEvents
 from .minified.remissions import RemissionsMin
 
 
@@ -16,14 +15,15 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
     tracking_id: str
     order_number: str
     foreign_id: Optional[str] = None
-    order_type: OrderTypes
+    order_type: str
     items: List[str]  # list[skus]
     delivery_destination: RemissionDestination
     delivery_date: int
     author: UsersMin
+    oms_entity_type: Optional[str] = None
     delivery_id: Optional[str] = None
     appointment_delivery_date: Optional[int] = None
-    current_event: Optional[RemissionEvents] = None
+    current_event: Optional[str] = None
     current_event_timestamp: Optional[int] = None
     institution_number: Optional[str] = None
 
