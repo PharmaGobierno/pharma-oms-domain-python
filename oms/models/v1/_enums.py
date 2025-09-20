@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class OrderTypes(str, Enum):
+class OmsEntityTypes(str, Enum):
     REMISSION_PISA = "REMISSION_PISA"
 
 
