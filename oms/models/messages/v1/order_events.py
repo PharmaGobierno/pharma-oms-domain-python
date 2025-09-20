@@ -10,7 +10,7 @@ class OrderEventsPubsubMessage(BasePubsubMessage):
     payload: dict
     event: str
     action_type: EntityActionTypes
-    order_type: str
+    oms_entity_type: str
     origin_platform: str
     version: str = "1"
 
@@ -24,6 +24,6 @@ class OrderEventsPubsubMessage(BasePubsubMessage):
             **default_attributes,
             "event": self.event,
             "action_type": self.action_type.value,
-            "order_type": self.order_type,
+            "oms_entity_type": self.oms_entity_type,
             "origin_platform": self.origin_platform,
         }
