@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
+from base64 import urlsafe_b64encode
 from dataclasses import asdict, dataclass, field, fields, is_dataclass
 from enum import Enum
 from time import time
 from typing import Generic, TypeVar
-from uuid import NAMESPACE_OID, uuid4, uuid5, UUID
-from base64 import urlsafe_b64encode
+from uuid import NAMESPACE_OID, UUID, uuid4, uuid5
 
 EventAttributeT = TypeVar("EventAttributeT", bound="Enum")
 MinifiedObjectT = TypeVar("MinifiedObjectT")
@@ -26,7 +26,7 @@ def uuid_by_params(*args):
 def short_uuid(*args) -> str:
     """Generates a short, URL-safe UUID based on the given parameters."""
     long_uuid = UUID(uuid_by_params(*args))
-    return urlsafe_b64encode(long_uuid.bytes).rstrip(b'=').decode()
+    return urlsafe_b64encode(long_uuid.bytes).rstrip(b"=").decode()
 
 
 @dataclass
@@ -81,7 +81,7 @@ class UpdatableModel(BaseModel):
 
 
 @dataclass(kw_only=True)
-class EventfulModel(BaseModel, Generic[EventAttributeT]):
+class EventfulModel(BaseModel):
     """A generic dataclass representing a event entity with
     event timestamp. Using in event sourcing entities
 
@@ -92,7 +92,7 @@ class EventfulModel(BaseModel, Generic[EventAttributeT]):
     """
 
     event_timestamp: int
-    event: EventAttributeT
+    event: str
 
 
 @dataclass(kw_only=True)

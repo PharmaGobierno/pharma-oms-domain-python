@@ -7,13 +7,12 @@ from oms.models.v1.minified.remissions import RemissionsMin
 from oms.models.v1.minified.users import UsersMin
 
 from ._base import EventfulModel, UpdatableModel, uuid_by_params
-from ._enums import RemissionEvents
 
 
 @dataclass(kw_only=True)
 class RemissionEventsModel(
     UpdatableModel,
-    EventfulModel[RemissionEvents],
+    EventfulModel,
 ):
     __entity_name__ = "remission-events"
 

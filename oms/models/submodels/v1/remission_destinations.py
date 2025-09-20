@@ -6,4 +6,5 @@ from typing import Literal
 class RemissionDestination:
     id: str
     customer: str
+
     version: Literal["1.0.0"] = "1.0.0"
