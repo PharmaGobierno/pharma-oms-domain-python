@@ -14,7 +14,7 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
 
     tracking_id: str
     order_number: str
-    tracking_wapper_id: Optional[str] = None  # wrapper for trackings
+    tracking_wrapper_id: Optional[str] = None  # wrapper for trackings
     foreign_id: Optional[str] = None
     order_type: str
     items: List[str]  # list[skus]
@@ -42,5 +42,5 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
             order_type=self.order_type,
             delivery_date=self.delivery_date,
             delivery_destination_id=self.delivery_destination.id,
-            tracking_wapper_id=self.tracking_wapper_id,
+            tracking_wrapper_id=self.tracking_wrapper_id,
         )
