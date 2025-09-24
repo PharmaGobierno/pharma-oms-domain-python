@@ -18,11 +18,11 @@ class RemissionEventsModel(
 
     remission: RemissionsMin
     author: UsersMin
+    origin_platform: str
     evidences: Optional[List[RemissionEvidence]] = None
     metadata: Optional[dict] = None
     event_note: Optional[RemissionEventNote] = None
     warnings: Optional[List[str]] = None
-    origin_platform: Optional[str] = None
 
     def __post_init__(self):
         super().__post_init__()
