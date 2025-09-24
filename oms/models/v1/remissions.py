@@ -14,6 +14,7 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
 
     tracking_id: str
     order_number: str
+    tracking_wapper_id: Optional[str] = None  # wrapper for trackings
     foreign_id: Optional[str] = None
     order_type: str
     items: List[str]  # list[skus]
@@ -26,6 +27,7 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
     current_event: Optional[str] = None
     current_event_timestamp: Optional[int] = None
     institution_number: Optional[str] = None
+    metadata: Optional[dict] = None  # free-form json
 
     def __post_init__(self):
         super().__post_init__()
@@ -40,4 +42,5 @@ class RemissionsModel(UpdatableModel, MinifiableModel[RemissionsMin]):
             order_type=self.order_type,
             delivery_date=self.delivery_date,
             delivery_destination_id=self.delivery_destination.id,
+            tracking_wapper_id=self.tracking_wapper_id,
         )
