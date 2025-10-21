@@ -99,4 +99,4 @@ class EventfulModel(BaseModel):
 class MinifiableModel(Generic[MinifiedObjectT], ABC):
     @abstractmethod
     def minified(self) -> MinifiedObjectT:
-        pass
+        raise NotImplementedError
